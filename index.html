@@ -63,10 +63,33 @@
         btn.onclick = function () {
             const key = target.value;
             if (obj[key]) {
-                result.innerHTML = obj[key];
+                str = obj[key];
+                strr = bh(str)
+                result.innerHTML = strr;
             }
         }
         main.appendChild(btn);
+
+        //生成笔画
+        function bh(str){
+            let out = ''
+            for( i = 0 ; i < str.length ; i++ ){
+                switch(str[i]){
+                    case '1': out +="一"
+                        break
+                    case '2': out +="丨"
+                        break
+                    case '3': out +="丿"
+                        break
+                    case '4': out +="丶"
+                        break
+                    case '5': out +="ㄥ"
+                        break
+                }
+                if(i%11==0&&i!=0) out +="<br >";
+            }
+            return out;
+        }
 
     </script>
 
