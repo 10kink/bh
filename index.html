@@ -1,92 +1,33 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>一粒笔画</title>
-    <style>
-        .main {
-            max-width: 90vw;
-            width: 600px;
-            margin: 30px auto;
-
-            font-family: Arial, Helvetica, sans-serif;
-        }
-
-        .inputhere {
-            min-width: 290px;
-            border: 1px solid #363636;
-            margin: 9px auto;
-            display: grid;
-            grid-template-columns: 1fr 44px;
-        }
-
-        input {
-            /* max-width: 80%;
-            width: 550px; */
-            height: 44px;
-            border: 0;
-            font-size: 19px;
-            padding: 7px 8px 7px 8px;
-            margin: 0;
-        }
-        
-		button:focus,
-        input:focus {
-            outline: 0;
-        }
-
-        button {
-            /* width: 10%; */
-            background-color: #fff;
-            border: 0;
-            font-size: 20px;
-        }
-
-        #outputhere {
-            text-align: center;
-            font-size: 19px;
-            word-wrap: break-word;
-        }
-
-        .iconfont {
-            font-family: "iconfont";
-            font-size: 25px;
-            font-style: normal;
-        }
-
-        @font-face {
-            font-family: 'iconfont';
-            /* project id 1984431 */
-            src: url('https://at.alicdn.com/t/font_1984431_drl679buakt.eot');
-            src: url('https://at.alicdn.com/t/font_1984431_drl679buakt.eot?#iefix') format('embedded-opentype'),
-                url('https://at.alicdn.com/t/font_1984431_drl679buakt.woff2') format('woff2'),
-                url('https://at.alicdn.com/t/font_1984431_drl679buakt.woff') format('woff'),
-                url('https://at.alicdn.com/t/font_1984431_drl679buakt.ttf') format('truetype'),
-                url('https://at.alicdn.com/t/font_1984431_drl679buakt.svg#iconfont') format('svg');
-        }
-    </style>
+    <title>汉字笔画</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
 </head>
 
 <body>
-    <div class="main">
-        <div class="inputhere">
-            <input id="inputchar" placeholder="限一个字" autofocus><button onclick="search()"><i class="iconfont">&#xe671;</i></button>
+
+    <br>
+    <div class="container">
+        <div class="columns is-mobile is-2 is-variable is-centered ">
+            <span class="column is-8"> <input id="inputchar" class="input" autofocus></span>
+            <span class="column"> <button class=" button is-light" onclick="search()">搜索</button></span>
         </div>
         <br>
-        <p id="outputhere"></p>
+        <p class="outputhere block box">限一个字</p>
     </div>
-    <script src="https://cdn.jsdelivr.net/gh/10kink/bh/data_v2.js"></script>
-    <script>
 
+
+    <script src="https://cdn.jsdelivr.net/gh/ccccpress/bh/data_v2.js"></script>
+    <script>
         function search() {
             let one = document.getElementById('inputchar').value
             let two = bh(myMap.get(one))
-            document.getElementById('outputhere').innerHTML = two
-            console.log(two)
+            document.getElementsByClassName('outputhere')[0].innerHTML = two
         }
-
         function bh(str) {
             let out = ''
             for (i = 0; i < str.length; i++) {
@@ -102,7 +43,6 @@
                     case '5': out += "ㄥ"
                         break
                 }
-                //   if(i==9||) out +="<br >";
             }
             return out;
         }
