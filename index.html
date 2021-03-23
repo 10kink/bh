@@ -17,7 +17,7 @@
             <span class="column"> <button class=" button is-light" onclick="search()">搜索</button></span>
         </div>
         <br>
-        <p class="outputhere block box">限一个字</p>
+        <p class="outputhere block box">限一个中文简体常用汉字</p>
     </div>
 
 
@@ -45,6 +45,10 @@
                 }
             }
             return out;
+        }
+        document.onkeydown = function () {
+            if (window.event.keyCode == 13)
+                search()
         }
     </script>
 </body>
